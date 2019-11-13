@@ -30,7 +30,7 @@ public class Encryptor {
         try {
             SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "AES");
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            IvParameterSpec ivParameterSpec = new IvParameterSpec(stringiv.getBytes());
+            IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes());
             cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivParameterSpec);
 
             encryptedMessage = new String(Hex.encodeHex(cipher.doFinal(message.getBytes())));
